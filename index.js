@@ -5,15 +5,6 @@ const cloudscraper = require('cloudscraper');
 const yapo_url = "https://www.yapo.cl/biobio/ofertas_de_empleo/?q=";
 const keywords = ["Desarrollador", "Programador", "Informatico"];
 
-// rp(url)
-//     .then(function (html) {
-//         //success!
-//         console.log(html);
-//     })
-//     .catch(function (err) {
-//         console.error(err)
-//     });
-
 function webcall(url) {
     return new Promise((resolve, reject) => {
         cloudscraper.get(url, function (error, response, body) {
@@ -31,7 +22,16 @@ async function main() {
         try {
             let body = await webcall(yapo_url + keywords[i])
             $ = cheerio.load(body);
-            console.log($("tr.listing_thumbs").html())
+            $("#hl").find(".ad").each(function(i, elem){
+                let new_offer = {
+                    title: $(elem).find(".title").html(),
+                    url: $(elem).find(".title").attr("href"),
+                    date: $(elem).find(".date").html() + " " + $(elem).find(".hour").html(),
+                    img: ($(elem).find(".image").attr("src").includes("/img/transparent.gif") ? "https://www.yapo.cl/img/home_yapo_logo.png" : $(elem).find(".image").attr("src")),
+                    address: $(elem).find(".region").html() + ", " + $(elem).find(".commune").html()
+                }
+                console.log(new_offer)
+            })
         } catch (error) {
             console.error(error)
         }
