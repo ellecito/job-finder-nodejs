@@ -8,6 +8,10 @@ async function main() {
     offers = offers.concat(await chiletrabajos.get())
     offers = offers.concat(await computrabajo.get())
 
+    offers.sort(function (a, b) {
+        return a.date - b.date
+    })
+
     console.log(offers)
 }
 
