@@ -22,8 +22,8 @@ module.exports = {
                 title: $(elem).find(".js-o-link").html(),
                 url: "https://www.computrabajo.cl" + $(elem).find(".js-o-link").attr("href"),
                 date: module.exports.castdate($(elem).find(".dO").html()),
-                img: "",
-                address: ""
+                img: ($(elem).find("img.lazy").attr("data-original") ? $(elem).find("img.lazy").attr("data-original") : "https://s.ct-stc.com/web/c/cl/img/logo_cl.png"),
+                address: $(elem).find("div.w_100.fl.mtb5.lT > span").eq(1).find("a").html() + ", " + $(elem).find("div.w_100.fl.mtb5.lT > span").eq(1).find("a").eq(1).html()
             }
             if (offers.map(function (e) { return e.url }).indexOf(offer.url) === -1) offers.push(offer) //Ofertas Repetidas
         })
