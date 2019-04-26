@@ -3,7 +3,7 @@ const app = express();
 
 // const moment = require("moment");
 const ip = 'https://job-finder-express.herokuapp.com';
-const port = '
+const port = process.env.PORT || 3000
 
 const yapo = require("./yapo.js");
 const chiletrabajos = require("./chiletrabajos.js");
