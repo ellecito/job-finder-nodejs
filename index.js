@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 
 const moment = require("moment");
-const ip = 'localhost';
-const port = '8081';
+const ip = 'https://job-finder-express.herokuapp.com';
+const port = '80';
 
 const yapo = require("./yapo.js");
 const chiletrabajos = require("./chiletrabajos.js");
@@ -36,4 +36,4 @@ app.get('/', async (req, res) => {
     res.send(offers)
 })
 
-app.listen(port, () => console.log('Escuchando en http://' + ip + ":" + port))
+app.listen(port, () => console.log('Escuchando en ' + ip + ":" + port))
