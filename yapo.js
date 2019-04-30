@@ -9,17 +9,15 @@ module.exports = {
     keywords: ["Desarrollador", "Programador", "Informatico"],
     webcall: url => {
         return new Promise((resolve, reject) => {
-            cloudscraper.get(url, function (error, response, body) {
-                if (error) {
-                    reject(error)
-                } else {
-                    resolve(body)
-                }
-            });
+            cloudscraper.get(url).then(response => {
+                resolve(response)
+            }).catch(err => {
+                reject(err)
+            })
         })
     },
     scraping: html => {
-        let $ = cheerio.load(html);
+        let $ = cheerio.load(html, { decodeEntities: false });
         let offer = null;
         let offers = new Array();
         if ($(".FailoverMessageBox").html() == null) {
