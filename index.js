@@ -16,10 +16,6 @@ function main() {
         offers = offers.concat(await chiletrabajos.get())
         offers = offers.concat(await computrabajo.get())
 
-        // offers.sort(function (a, b) {
-        //     return a.date - b.date
-        // })
-
         let filter_offers = new Array()
         offers.forEach(offer => {
             if (filter_offers.map(function (e) { return e.url }).indexOf(offer.url) === -1) filter_offers.push(offer)
@@ -37,3 +33,10 @@ app.get('/', async (req, res) => {
 })
 
 app.listen(port, () => console.log('Escuchando en ' + ip + ":" + port))
+
+async function test() {
+    let offers = await main()
+    console.log(offers)
+}
+
+// test()
