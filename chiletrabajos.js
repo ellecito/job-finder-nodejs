@@ -9,7 +9,7 @@ module.exports = {
     keywords: ["Desarrollador", "Programador", "Informatico"],
     webcall: url => {
         return new Promise((resolve, reject) => {
-            rp(url).then(html => { resolve(html) }).catch(err => { reject(err) })
+            rp({ uri: url, encoding: "latin1" }).then(html => { resolve(html) }).catch(err => { reject(err) })
         })
     },
     scraping: html => {
