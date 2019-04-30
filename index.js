@@ -16,9 +16,9 @@ function main() {
         offers = offers.concat(await chiletrabajos.get())
         offers = offers.concat(await computrabajo.get())
 
-        offers.sort(function (a, b) {
-            return a.date - b.date
-        })
+        // offers.sort(function (a, b) {
+        //     return a.date - b.date
+        // })
 
         let filter_offers = new Array()
         offers.forEach(offer => {
