@@ -1,6 +1,7 @@
 const cloudscraper = require('cloudscraper');
 const cheerio = require('cheerio');
 const moment = require('moment'); moment.locale("es");
+const iconv = require('iconv-lite');
 
 const meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
 
@@ -9,7 +10,8 @@ module.exports = {
     keywords: ["Desarrollador", "Programador", "Informatico"],
     webcall: url => {
         return new Promise((resolve, reject) => {
-            cloudscraper.get(url).then(response => {
+            cloudscraper.get({ url: url, encoding: null }).then(response => {
+                response = iconv.decode(response, 'iso-8859-1')
                 resolve(response)
             }).catch(err => {
                 reject(err)

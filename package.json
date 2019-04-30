@@ -12,6 +12,7 @@
     "cheerio": "^1.0.0-rc.2",
     "cloudscraper": "^4.0.1",
     "express": "^4.16.4",
+    "iconv-lite": "^0.4.24",
     "moment": "^2.24.0",
     "puppeteer": "^1.15.0",
     "request": "^2.88.0",
