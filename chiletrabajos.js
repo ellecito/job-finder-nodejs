@@ -9,11 +9,11 @@ module.exports = {
     keywords: ["Desarrollador", "Programador", "Informatico"],
     webcall: url => {
         return new Promise((resolve, reject) => {
-            rp({ uri: url, encoding: "latin1" }).then(html => { resolve(html) }).catch(err => { reject(err) })
+            rp(url).then(html => { resolve(html) }).catch(err => { reject(err) })
         })
     },
     scraping: html => {
-        let $ = cheerio.load(html);
+        let $ = cheerio.load(html, { decodeEntities: false });
         let offer = null;
         let offers = new Array();
 
