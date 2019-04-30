@@ -19,7 +19,7 @@ module.exports = {
         })
     },
     scraping: html => {
-        let $ = cheerio.load(html, { decodeEntities: false });
+        let $ = cheerio.load(html);
         let offer = null;
         let offers = new Array();
         if ($(".FailoverMessageBox").html() == null) {
