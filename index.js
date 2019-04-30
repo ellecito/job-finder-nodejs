@@ -13,8 +13,8 @@ function main() {
     return new Promise(async (resolve, reject) => {
         let offers = new Array()
         offers = offers.concat(await yapo.get())
-        // offers = offers.concat(await chiletrabajos.get())
-        // offers = offers.concat(await computrabajo.get())
+        offers = offers.concat(await chiletrabajos.get())
+        offers = offers.concat(await computrabajo.get())
 
         let filter_offers = new Array()
         offers.forEach(offer => {
