@@ -20,11 +20,14 @@ function main() {
         offers.forEach(offer => {
             if (filter_offers.map(function (e) { return e.url }).indexOf(offer.url) === -1) filter_offers.push(offer)
         })
+
+        filter_offers.sort(function (a, b) {
+            return b.date - a.date
+        })
         resolve(filter_offers)
     })
 
     // console.log(filter_offers.map(o => { return o = { title: o.title, address: o.address, url: o.url, date: moment(o.date).format('LL') } }))
-
 }
 
 app.get('/', async (req, res) => {

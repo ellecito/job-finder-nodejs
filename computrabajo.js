@@ -72,11 +72,6 @@ module.exports = {
                 console.error(error)
             }
         }
-        /*Ordenamiento por fecha */
-        offers.sort(function (a, b) {
-            return b.date - a.date
-        })
-
         return offers
     }
 }
