@@ -22,24 +22,12 @@ module.exports = {
         let offer_date = ""
         if (cant_offers > 0) {
             $(".col-sm-6.page-content.mb30").find(".job-item").each(function (i, elem) {
-                $(elem).find(".meta").each(function (j, m) {
-                    switch (j) {
-                        case 0:
-                            offer_address = $(m).html().trim()
-                            break;
-                        case 1:
-                            offer_date = $(m).html().replace(/<\/?[^>]+(>|$)/g, "").replace(",", "").trim().replace(/ +(?= )/g, '')
-                            break;
-                        default:
-                            break;
-                    }
-                })
                 offer = {
                     title: $(elem).find(".title > a").html(),
                     url: $(elem).find(".title > a").attr("href"),
-                    date: module.exports.castdate(offer_date),
+                    date: module.exports.castdate($(elem).find("h3.meta").eq(1).find("a").html().replace(/<\/?[^>]+(>|$)/g, "").replace(",", "").trim().replace(/ +(?= )/g, '')),
                     img: "https://s3.amazonaws.com/cht2/public/img/ch/featured.png",
-                    address: offer_address
+                    address: $(elem).find("h3.meta").eq(0).find("a").html()
                 }
                 if (offers.map(function (e) { return e.url }).indexOf(offer.url) === -1) offers.push(offer) //Ofertas Repetidas
                 if (i == cant_offers - 1) return false;
